@@ -1,0 +1,55 @@
+/* Import custom fonts */
+@import './assets/fonts/fonts.css';
+
+/* Fallback Google Fonts (optional) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+/* CSS Variables for font management */
+:root {
+  --font-english: 'CustomEnglish', Arial, sans-serif;
+  --font-kurdish: 'CustomKurdish', 'Noto Sans Arabic', 'Amiri', Arial, sans-serif;
+  --font-fallback: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-english);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+/* English font support */
+.english-text {
+  font-family: var(--font-english);
+  direction: ltr;
+  text-align: left;
+}
+
+.english-input {
+  font-family: var(--font-english);
+  direction: ltr;
+  text-align: left;
+}
+
+/* Kurdish font support */
+.kurdish-text, .display-kurdish {
+  font-family: var(--font-kurdish);
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: bidi-override;
+}
+
+.kurdish-input {
+  font-family: var(--font-kurdish);
+  direction: rtl;
+  text-align: right;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

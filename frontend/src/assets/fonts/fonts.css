@@ -1,0 +1,21 @@
+/* Custom Font Setup with Your Fonts */
+
+/* Roboto Flex - Modern Variable Font for English */
+@font-face {
+  font-family: 'RobotoFlex';
+  src: url('./RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Rabar - Kurdish Font */
+@font-face {
+  font-family: 'Rabar';
+  src: url('./Rabar_021.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Font Variables - Using Your Custom Fonts */
+:root {
+  --font-english: 'RobotoFlex';
+  --font-kurdish: 'Rabar';
+}
