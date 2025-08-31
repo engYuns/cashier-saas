@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config/api';
 import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // Check if user is already logged in
@@ -21,9 +24,11 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,10 +49,13 @@ function Login() {
           navigate('/cashier');
         }
       } else {
-        alert(data.error);
+        setError(data.error || 'Login failed');
       }
     } catch (error) {
-      alert('Login failed');
+      console.error('Login error:', error);
+      setError('Network error - please check your connection');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,14 +65,28 @@ function Login() {
         <h1>💰 Cashier SaaS</h1>
         <p>Login for Superadmin & Cashier</p>
         
+        {/* Demo Credentials Info */}
+        <div className="demo-credentials">
+          <h4>🔑 Demo Credentials:</h4>
+          <p><strong>SuperAdmin:</strong> superadmin / admin123</p>
+          <p><strong>Cashier:</strong> cashier@demo.com / cashier123</p>
+        </div>
+        
+        {error && (
+          <div className="error-message">
+            ❌ {error}
+          </div>
+        )}
+        
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <input
-              type="email"
-              placeholder="Email"
+              type="text"
+              placeholder="Email or Username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              disabled={loading}
             />
           </div>
           
@@ -75,11 +97,12 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              disabled={loading}
             />
           </div>
           
-          <button type="submit" className="login-btn">
-            Login
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? '🔄 Logging in...' : 'Login'}
           </button>
         </form>
       </div>
