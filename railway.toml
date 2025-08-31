@@ -1,0 +1,10 @@
+# Railway Deployment Config
+root = "."
+build = "npm run build-full"
+start = "npm start"
+
+[environments.production]
+NODE_ENV = "production"
+
+[build]
+builder = "nixpacks"

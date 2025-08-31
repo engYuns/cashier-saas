@@ -1,5 +1,8 @@
 # Cashier SaaS - Multi-Tenant Point of Sale System
 
+🚀 **Live Demo**: [Try it now!](https://your-vercel-url.vercel.app)  
+👨‍💻 **Login**: `superadmin` / `admin123`
+
 A comprehensive multi-tenant SaaS solution for businesses to create and manage their point-of-sale systems with a complete 6-step business setup workflow.
 
 ## 🚀 Features

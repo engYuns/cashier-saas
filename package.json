@@ -8,8 +8,10 @@
     "dev": "nodemon server.js",
     "frontend": "cd frontend && npm start",
     "build": "cd frontend && npm run build",
+    "build-full": "npm run install-all && npm run build",
     "install-all": "npm install && cd frontend && npm install",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
+    "deploy": "npm run build && node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
